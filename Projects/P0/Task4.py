@@ -7,10 +7,9 @@ import csv
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
-    listOfAllCallers = []
-    print(calls)
+    listOfAllCallers = set()
     for callers in calls:
-        listOfAllCallers.append(callers[0])
+        listOfAllCallers.add(callers[0])
     # Removing the numbers which received calls.
     for callers in calls:
         if callers[1] in listOfAllCallers:
@@ -26,7 +25,6 @@ with open('texts.csv', 'r') as f:
         if texters[1] in listOfAllCallers:
             listOfAllCallers.remove(texters[1])
 
-listOfAllCallers = set(listOfAllCallers)
 listOfAllCallers = list(listOfAllCallers)
 listOfAllCallers = sorted(listOfAllCallers)
 print("These numbers could be telemarketers: ")
