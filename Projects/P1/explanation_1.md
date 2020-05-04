@@ -1,7 +1,11 @@
-### Problem 1
-#### LRU Cache
+# LRU Cache
 
-My choice of data structure in this problem was Dictionaries in python as they
-are great to store key valued pairs and can perform lookups in O(1) time complexity.
+## Data Structure 
+I am using dictionaries here to store the key valued pairs in it. I am removing and adding in the dictionary to perform
+the use operation.
 
-All the methods written by me performs the tasks accurately in O(1) time complexity.
+## Time Complexity
+The time complexity of all the operations is O(1) time, as dictionaries takes constant time for lookup.
+
+## Space Complexity
+The worst case complexity will the linear that is the max capacity of LRU Cache.
