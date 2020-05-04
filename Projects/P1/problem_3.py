@@ -1,9 +1,14 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[35]:
+
+
 import sys
 import heapq
 
-
 class HeapNode:
-
+    
     def __init__(self, char, freq):
         self.char = char
         self.freq = freq
@@ -21,8 +26,11 @@ class HeapNode:
         return self.freq == compare.freq
 
 
-encodes = {}
-reverse = {}
+# In[39]:
+
+
+encodes = {}  # Dictionary to store the encoded data
+reverse = {}  # Dictionary to store the reversed data for decoding
 def huffman_encoding(data):
     heap = []
 
@@ -58,6 +66,7 @@ def huffman_encoding(data):
     for char in data:
         encoded_data += encodes[char]
 
+#     print(encoded_data)
     return encoded_data, root
 
 
@@ -68,14 +77,19 @@ def coding(root, codes):
 
     if root.char is not None:
         encodes[root.char] = codes
-        reverse[root.char] = root.char
+        reverse[codes] = root.char
 
     coding(root.left, codes + "0")
     coding(root.right, codes + "1")
 
+
+# In[40]:
+
+
 def huffman_decoding(data,tree):
     encodes = ""
     decoded_data = ""
+    # Searching for each data in reverse and appending to the list
     for char in data:
         encodes += char
         if encodes in reverse:
@@ -85,8 +99,24 @@ def huffman_decoding(data,tree):
     return decoded_data
 
 
+# In[41]:
 
-code, tree = huffman_encoding("The bird is the word")
-decoded = huffman_decoding(code, tree)
-print(code)
-print(decoded)
+
+if __name__ == "__main__":
+    codes = {}
+
+    a_great_sentence = "The bird is the word"
+
+    print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    print ("The content of the data is: {}\n".format(a_great_sentence))
+
+    encoded_data, tree = huffman_encoding(a_great_sentence)
+
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+    decoded_data = huffman_decoding(encoded_data, tree)
+
+    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    print ("The content of the decoded data is: {}\n".format(decoded_data))
+
