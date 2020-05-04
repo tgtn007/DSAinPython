@@ -36,6 +36,9 @@ def huffman_encoding(data):
 
     # Making frequency dict.
     frequency = {}
+    if data is None:
+        return None, None
+
     for char in data:
         if char not in frequency:
             frequency[char] = 0
@@ -90,6 +93,8 @@ def huffman_decoding(data,tree):
     encodes = ""
     decoded_data = ""
     # Searching for each data in reverse and appending to the list
+    if data is None:
+        return None
     for char in data:
         encodes += char
         if encodes in reverse:
@@ -105,15 +110,15 @@ def huffman_decoding(data,tree):
 if __name__ == "__main__":
     codes = {}
 
-    a_great_sentence = "The bird is the word"
+    a_great_sentence = None
 
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
     print ("The content of the data is: {}\n".format(a_great_sentence))
 
     encoded_data, tree = huffman_encoding(a_great_sentence)
 
-    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print ("The content of the encoded data is: {}\n".format(encoded_data))
+    print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
 
     decoded_data = huffman_decoding(encoded_data, tree)
 

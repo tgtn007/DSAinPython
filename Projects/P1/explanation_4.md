@@ -1,7 +1,12 @@
-### Problem 3
-#### Active Directory
+# Active Directory
 
-We are using recursion in this question to iterate through all the groups in the given group and to check if it exists
+## Data Structure 
+There is no data structure used here, recursion was used to check all the groups and its subgroups, though we can say
+stack was used as recursion uses stack.
 
-In the worst case complexity when the element is not found so that we have to iterate till the end is O(N) its M + N
-where M is the number of total users in all the groups combined and N is number of groups inside the given group.
+## Time Complexity
+The time complexity to find all the files is O(N) no of files it had to check in the given path's directory and all it's
+subdirectories.
+
+## Space Complexity
+The worst case complexity will the linear that is number of groups inside one other to store it in recursion call stack.

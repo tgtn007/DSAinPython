@@ -46,18 +46,29 @@ def is_user_in_group_helper(user, group, var):
     return False or var
 
 
+
 parent = Group("parent")
 child = Group("child")
 sub_child = Group("subchild")
-
+sub_child2 = Group("subchild2")
 sub_child_user = "sub_child_user"
-sub_child.add_user(sub_child_user)
-
+sub_child2.add_user(sub_child_user)
 child.add_group(sub_child)
+child.add_group(sub_child2)
 parent.add_group(child)
 
+def test(user, group, expected_output):
+    if is_user_in_group(user, group) == expected_output:
+        if expected_output == False:
+            print('Pass: {} not in {} group'.format(user, group.get_name()))
+        else:
+            print('Pass: {} in {} group'.format(user, group.get_name()))
+    else:
+        print('Fail')
 
-is_user_in_group(sub_child_user, parent)  # return True
-is_user_in_group(sub_child_user, child)  # return True
-is_user_in_group(sub_child_user, sub_child)  # return True
-is_user_in_group("child1", parent)  # return False
+test(sub_child_user, parent, True) # Expected output: Pass
+test(sub_child_user, sub_child2, True) # Expected output: Pass
+test('Not a user', parent, False) # Expected output: Pass
+test('', parent, False) # Expected output: Pass
+test(None, parent, False) # Expected output: Pass
+test(sub_child_user, sub_child, False) # Expected output: Pass
