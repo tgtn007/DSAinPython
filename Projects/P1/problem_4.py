@@ -19,7 +19,8 @@ class Group(object):
     def get_name(self):
         return self.name
 
-def is_user_in_group(user, group, var):
+
+def is_user_in_group(user, group):
     """
     Return True if user is in the group, False otherwise.
 
@@ -28,14 +29,19 @@ def is_user_in_group(user, group, var):
       group(class:Group): group to check user membership against
     """
     # print(var)
-    print(group.name)
+    # print(group.name)
+    var = False
+    return is_user_in_group_helper(user, group, var)
+
+
+def is_user_in_group_helper(user, group, var):
     if user in group.get_users():       # Condition to check if users exist in the group.
         var = var or True
         return var
 
     if len(group.get_groups()):
         for groups in group.get_groups():
-            var = is_user_in_group(user, groups, var)       # Checking into all the groups by recursion.
+            var = is_user_in_group_helper(user, groups, var)       # Checking into all the groups by recursion.
 
     return False or var
 
@@ -50,4 +56,8 @@ sub_child.add_user(sub_child_user)
 child.add_group(sub_child)
 parent.add_group(child)
 
-print(is_user_in_group(sub_child_user, parent, False))
+
+is_user_in_group(sub_child_user, parent)  # return True
+is_user_in_group(sub_child_user, child)  # return True
+is_user_in_group(sub_child_user, sub_child)  # return True
+is_user_in_group("child1", parent)  # return False
