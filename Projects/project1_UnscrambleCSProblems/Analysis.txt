@@ -1,0 +1,5 @@
+Task 0 - My code is taking worst case O(1) time complexity, that is constant time.
+Task 1 - My code is taking worst case O(N) time complexity, that is linear time dependent on the size of input.
+Task 2 - My code is taking worst case O(N) time complexity, that is linear time dependent on the size of input.
+Task 3 - My code is taking worst case O(Nlog N) time complexity, that is linear time multiplied by logarithmic time dependent on the size of input due to sorting.
+Task 4 - My code is taking worst case O(Nlog N) time complexity, that is quadratic of size of the input.
