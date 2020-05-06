@@ -1,62 +1,21 @@
-def binary_search(arr, number, left):
-    if len(arr) == 0:
-        return None
-    mid = (len(arr) - 1) // 2
-    if arr[mid] == number:
-        return mid + left
-    elif arr[mid] < number:
-        return binary_search(arr[mid + 1:], number, left + mid + 1)
+for _ in range(int(input())):
+    alpha = list(map(int, input().split()))
+    leen = dict()
+
+    for _ in range(alpha[0]):
+        s = input()
+        if len(s) not in leen:
+            leen[len(s)] = 0
+        leen[len(s)] += 1
+
+    # print(leen)
+    count = 0
+    ans = True
+    for al, val, in leen.items():
+        if val % alpha[1] :
+            ans = False
+    if ans:
+        print("Possible")
     else:
-        return binary_search(arr[:mid - 1], number, left)
+        print("Not possible")
 
-
-def first_and_last_index(source, number):
-    """
-    Given a sorted array that may have duplicate values, use binary
-    search to find the first and last indexes of a given value.
-
-    Args:
-        arr(list): Sorted array (or Python list) that may have duplicate values
-        number(int): Value to search for in the array
-    Returns:
-        a list containing the first and last indexes of the given value
-    """
-
-    # TODO: Write your first_and_last function here
-    # Note that you may want to write helper functions to find the start
-    # index and the end index
-    index = binary_search(source, number, 0)
-    res = list()
-    if index == None:
-        return [-1, -1]
-
-    left = index
-    while source[left] == number:
-        if left == 0:
-            res.append(left)
-            break
-        if source[left - 1] == number:
-            left -= 1
-        else:
-            res.append(left)
-            break
-
-    right = index
-    while source[right] == number:
-        if right == len(source) - 1:
-            res.append(right)
-            break
-        if source[right + 1] == number:
-            right += 1
-        else:
-            res.append(right)
-            break
-    return res
-    pass
-
-arr = [1]
-number = 1
-index = binary_search(arr, number, 0)
-print(index)
-res = first_and_last_index(arr, number)
-print(res)
