@@ -1,21 +1,23 @@
 for _ in range(int(input())):
-    alpha = list(map(int, input().split()))
-    leen = dict()
-
-    for _ in range(alpha[0]):
-        s = input()
-        if len(s) not in leen:
-            leen[len(s)] = 0
-        leen[len(s)] += 1
-
-    # print(leen)
-    count = 0
+    para = list(map(int, input().split()))
+    equal = list()
+    not_equal = list()
     ans = True
-    for al, val, in leen.items():
-        if val % alpha[1] :
-            ans = False
+    for i in range(para[1]):
+        string = input()
+        if len(string) == 5:
+            add = [string[0], string[-1]]
+            if add in not_equal:
+                ans = False
+            else:
+                equal.append(add)
+        else:
+            add = [string[0], string[-1]]
+            if add in equal:
+                ans = False
+            else:
+                not_equal.append(add)
     if ans:
-        print("Possible")
+        print("YES")
     else:
-        print("Not possible")
-
+        print("NO")
