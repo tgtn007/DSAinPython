@@ -8,4 +8,4 @@ My approach takes O(N Log N) time complexity to sort the array by using quick so
 O(N^2) if the array is already sorted.
 
 ## Space Complexity 
-My approach is taking O(1) space complexity as we are not storing any lists or using any additional data structure.
+My approach is taking O(LogN) space complexity for the recursive calls used in quick sort, it may go upto worst case O(N).
