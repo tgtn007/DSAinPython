@@ -7,8 +7,11 @@ def sqrt(number):
     Returns:
        int: Floored Square Root
     """
+    if number <= 1:
+        return number
+
     start = 0
-    end = 1000000
+    end = number//2
     while start <= end:
         mid = start + (end - start) // 2
         if (mid * mid) == number:
@@ -27,6 +30,5 @@ print ("Pass" if  (4 == sqrt(16)) else "Fail")  # Passes the test case
 print ("Pass" if  (1 == sqrt(1)) else "Fail")   # Passes the test case
 print ("Pass" if  (6 == sqrt(37)) else "Fail")  # Passes the test case
 print ("Pass" if  (5 == sqrt(27)) else "Fail")  # Passes the test case
-print ("Pass" if  (1 == sqrt(1)) else "Fail")   # Passes the test case
 print ("Pass" if  (3 == sqrt(12)) else "Fail")  # Passes the test case
 print ("Pass" if  (56 == sqrt(3136)) else "Fail")   # Passes the test case

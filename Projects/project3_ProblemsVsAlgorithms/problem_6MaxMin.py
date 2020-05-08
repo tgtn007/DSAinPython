@@ -8,8 +8,8 @@ def get_min_max(ints):
     if len(ints) == 0:
         return (None, None)
 
-    maax = -100000000  # Initializing the max value with lowest possible value
-    miin = 100000000  # Initializing the  min value with highest possible value
+    maax = float('-inf')  # Initializing the max value with lowest possible value
+    miin = float('inf')  # Initializing the  min value with highest possible value
 
     # Traversing the list once to check all the elements.
     for i in range(len(ints)):

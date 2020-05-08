@@ -34,6 +34,10 @@ def rearrange_digits(input_list):
     Returns:
        (int),(int): Two maximum sums
     """
+    if len(input_list) == 0:
+        return [None, None]
+    if len(input_list) == 1:
+        return [input_list[0], None]
     first_num = ""
     second_num = ""
 
@@ -54,6 +58,12 @@ def rearrange_digits(input_list):
 
 
 def test_function(test_case):
+    if test_case[0][0] == None:
+        if rearrange_digits(test_case[0]) == [None, None]:
+            print("Pass // Enter valid numbers. ")
+            return
+        else:
+            print("Fail")
     output = rearrange_digits(test_case[0])
     solution = test_case[1]
     if sum(output) == sum(solution):
@@ -64,3 +74,5 @@ def test_function(test_case):
 
 test_function([[1, 2, 3, 4, 5], [542, 31]])         # Passes
 test_function([[4, 6, 2, 5, 9, 8], [964, 852]])     # Passes
+test_function([[3, 4, 2, 2, 5, 6, 7, 1, 2, 3, 4, 9], [754321,964322]]) # Passes
+test_function(([None], []))                         # Pass // Enter valid number

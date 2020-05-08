@@ -1,23 +1,24 @@
-for _ in range(int(input())):
-    para = list(map(int, input().split()))
-    equal = list()
-    not_equal = list()
-    ans = True
-    for i in range(para[1]):
-        string = input()
-        if len(string) == 5:
-            add = [string[0], string[-1]]
-            if add in not_equal:
-                ans = False
-            else:
-                equal.append(add)
-        else:
-            add = [string[0], string[-1]]
-            if add in equal:
-                ans = False
-            else:
-                not_equal.append(add)
-    if ans:
-        print("YES")
-    else:
-        print("NO")
+initial = input().split('|')
+after = input()
+diff = abs(len(initial[0]) - len(initial[1]))
+ans = True
+if len(after) < diff:
+    print("Impossible")
+    exit(0)
+
+temp = len(after) - diff
+alpha = temp // 2
+if temp & 1:
+    print("Impossible")
+    exit(0)
+
+if len(initial[0]) < len(initial[1]):
+    initial[0] += after[:diff]
+else:
+    initial[1] += after[:diff]
+
+if alpha:
+    initial[0] += after[diff:alpha + diff]
+    initial[1] += after[alpha + diff:]
+
+print('|'.join(initial))
