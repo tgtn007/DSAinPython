@@ -1,24 +1,17 @@
-initial = input().split('|')
-after = input()
-diff = abs(len(initial[0]) - len(initial[1]))
-ans = True
-if len(after) < diff:
-    print("Impossible")
-    exit(0)
+a, b = map(int, input().split())
+# a = int(a)
+# b = int(b)
+temp = a - b
 
-temp = len(after) - diff
-alpha = temp // 2
-if temp & 1:
-    print("Impossible")
-    exit(0)
+ans = []
+for i in range(b):
+    ans.append(a)
+    a -= 1
 
-if len(initial[0]) < len(initial[1]):
-    initial[0] += after[:diff]
-else:
-    initial[1] += after[:diff]
+add = 1
+for i in range(temp):
+    ans.append(add)
+    add += 1
 
-if alpha:
-    initial[0] += after[diff:alpha + diff]
-    initial[1] += after[alpha + diff:]
-
-print('|'.join(initial))
+for item in ans:
+    print(item, end = " ")
