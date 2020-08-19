@@ -1,6 +1,14 @@
-ans = 0
-for _ in range(int(input())):
-    a = list(map(int, input().split()))
-    if a[1] - a[0] >= 2:
-        ans+=1
-print(ans)
+a = int(input())
+b = int(input())
+
+
+def prime(i):
+    for j in range(2, i):
+        if i % j == 0:
+            return False
+    return True
+
+
+for i in range(a, b + 1):
+    if prime(i):
+        print(i)
